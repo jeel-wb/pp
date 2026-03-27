@@ -1,103 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-    <link rel=" websites icon" type="png" href="icon.png">
+      <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #fff;
+    background: #000;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a {
+    display: inline-block;
+    font-size: 25px;
+    color: red;
+    text-decoration: none;
+    margin-left: 35px;
+    transition: .3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #fff;
+    text-shadow: 0 0 10px red;
+}
+
+/* Home Section */
+.home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    justify-content: space-between;
+}
+
+.home-content h3 { font-size: 32px; font-weight: 700; }
+.home-content h1 { font-size: 56px; font-weight: 700; margin: 10px 0; }
+.text { color: red; }
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; height: 40px;
+    border: 2px solid red;
+    border-radius: 50%;
+    color: red;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s;
+}
+
+.home-sci a:hover {
+    background: red;
+    color: #000;
+    box-shadow: 0 0 20px red;
+}
+
+.photo img {
+    width: 300px;
+    height: 300px;
+    background: #222; /* Default box if no image */
+    border-radius: 50%;
+    border: 5px solid red;
+    box-shadow: 0 0 20px red;
+}
+
+.btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: red;
+    border-radius: 40px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 15px red;
+}
+
+/* Sections Common */
+.about, .services, .skills, .contact { padding: 80px 10%; }
+.sub-title { text-align: center; font-size: 60px; margin-bottom: 50px; }
+.sub-title span { color: red; }
+
+/* Grid Layouts */
+.services-list, .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.services-list div {
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 20px red;
+    transition: 0.5s;
+}
+
+.services-list div:hover { transform: translateY(-10px); }
+
+/* Progress Bars */
+.bar { margin: 20px 0; }
+.progress-line {
+    height: 8px; width: 100%; background: #333; border-radius: 10px; position: relative;
+}
+.progress-line span {
+    height: 100%; background: red; position: absolute; border-radius: 10px;
+}
+
+/* Placeholder widths */
+.skill1 span { width: 90%; }
+.skill2 span { width: 70%; }
+.skill3 span { width: 50%; }
+
+/* Form */
+.contact-form input, .contact-form textarea {
+    width: 100%; padding: 15px; background: #111; border: 1px solid red;
+    color: #fff; margin-bottom: 10px; border-radius: 10px;
+}
+
+.send {
+    background: red; color: #000; font-weight: bold; cursor: pointer;
+}
+
+.footer { text-align: center; padding: 20px; background: #111; }
+      </style>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <title>PORTFOLIO</title>
+    <title>Portfolio Sample</title>
 </head>
-
 <body>
-    <header class="header">
-        <a href="file:///C:/Users/HP/OneDrive/Desktop/jeel/protfolio/index1.html" class="logo">Portfolio</a>
 
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
         <nav class="navbar">
-            <a href="#" style="--i:1" class="active"><i class="fa-solid fa-house"></i></a>
-            <a href="#" style="--i:2"><i class="fa-solid fa-address-card"></i></a>
-            <a href="#" style="--i:3"><i class="fa-solid fa-screwdriver-wrench"></i></a>
-            <a href="#" style="--i:4"><i class="fa-solid fa-diagram-project"></i></a>
-            <a href="#" style="--i:5"><i class="fa-solid fa-message"></i></a>
+            <a href="#home" style="--i:1" class="active"><i class="fa-solid fa-house"></i></a>
+            <a href="#about" style="--i:2"><i class="fa-solid fa-address-card"></i></a>
+            <a href="#services" style="--i:3"><i class="fa-solid fa-screwdriver-wrench"></i></a>
+            <a href="#skills" style="--i:4"><i class="fa-solid fa-layer-group"></i></a>
+            <a href="#contact" style="--i:5"><i class="fa-solid fa-message"></i></a>
         </nav>
     </header>
-    <section class="home">
+
+    <section class="home" id="home">
         <div class="home-content">
-            <h3>Hello, My name Jeel</h3>
-            <h1>Zeel Suthar</h1>
-            <h3>And I'm a <span class="text"></span></h3>
-            <p>Information Technology Student With Extensive Experince for over 6 Months. Expertise is to create and website design, Frontend design and any more......
-            </p>
-            <div class="photo">
-                <a href="#"><img src="me.jpeg" alt="My Photo" width="215"></a>
-            </div>
+            <h3>Hello, I am</h3>
+            <h1>[Your Name]</h1>
+            <h3>I'm a <span class="text"></span></h3>
+            <p>[Write a short bio about yourself here. Describe your passion and what you do.]</p>
+            
             <div class="home-sci">
-                <a href="https://www.linkedin.com/in/suthar-zeel-4b4a892bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="--i:7"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/Jeelsuthar" style="--i:8"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/_jeel_0?igsh=MXh3MmZ1cDRwbDc5dQ%3D%3D" style="--i:9"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://x.com/sutharjeel07?t=Gzj-YJC6RD91c6Mj8c0uPQ&s=09&mx=2" style="--i:10"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="#" style="--i:7"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" style="--i:8"><i class="fa-brands fa-github"></i></a>
+                <a href="#" style="--i:9"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" style="--i:10"><i class="fa-brands fa-square-x-twitter"></i></a>
             </div>
-            <div>
-                <a href="#" class="btn-box">More About Me</a>
-            </div>
+            <a href="#about" class="btn-box">View More</a>
         </div>
-        <span class="home-imgHover"></span>
+        <div class="photo">
+            <img src="" alt="Profile Image"> </div>
     </section>
+
     <section class="about" id="about">
         <div class="about-img">
-            <img src="me.jpeg" width="272">
-        </div>
+            <img src="" alt="About Me Image"> </div>
         <div class="about-text">
-            <h2>About<span>Me</span></h2>
-            <h4>Information Technology Student!</h4>
-            <p class="ph">I am studying Information Technology (B.Tech) at Silver Oak University. Information Technology is a part of Computer Science, which includes computer programming languages, web development, game development, and more. I am very interested
-                in these topics.</p>
-
-            <a href="#" class="btn-box">More About Me</a>
+            <h2>About <span>Me</span></h2>
+            <h4>[Professional Title]</h4>
+            <p>[Detailed description about your education, experience, and interests.]</p>
+            <a href="#" class="btn-box">Download CV</a>
         </div>
     </section>
 
-    <section>
-        <div class="services" id="services">
-            <div class="container">
-                <h1 class="sub-title">My<span>Services</span></h1>
-                <div class="services-list">
-                    <div>
-                        <i class="fa-solid fa-code" style="color: red;"></i>
-                        <h2>UI/ux Design</h2>
-                        <p>As a recent graduate with a degree in graphic design, I'm excited to launch my career in UX & UI design. Skilled in Adobe Creative Suite, Sketch, and InVision, I'm passionate about creating intuitive and user-friendly interfaces
-                            for web and mobile applications.</p>
-                        <a href="#" class="read">Lern more</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-crop" style="color:red;"></i>
-                        <h2>UI/ux Design</h2>
-                        <p>As a recent graduate with a degree in graphic design, I'm excited to launch my career in UX & UI design. Skilled in Adobe Creative Suite, Sketch, and InVision, I'm passionate about creating intuitive and user-friendly interfaces
-                            for web and mobile applications.</p>
-                        <a href="#" class="read">Lern more</a>
-                    </div>
-                    <div>
-                        <i class="fa-brands fa-apple" style="color: red;"></i>
-                        <h2>UI/ux Design</h2>
-                        <p>As a recent graduate with a degree in graphic design, I'm excited to launch my career in UX & UI design. Skilled in Adobe Creative Suite, Sketch, and InVision, I'm passionate about creating intuitive and user-friendly interfaces
-                            for web and mobile applications.</p>
-                        <a href="#" class="read">Lern more</a>
-                    </div>
+    <section class="services" id="services">
+        <div class="container">
+            <h1 class="sub-title">My <span>Services</span></h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Service 1</h2>
+                    <p>[Description of the service you provide.]</p>
+                    <a href="#" class="read">Details</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop"></i>
+                    <h2>Service 2</h2>
+                    <p>[Description of the service you provide.]</p>
+                    <a href="#" class="read">Details</a>
+                </div>
+                <div>
+                    <i class="fa-brands fa-apple"></i>
+                    <h2>Service 3</h2>
+                    <p>[Description of the service you provide.]</p>
+                    <a href="#" class="read">Details</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="skills" id="skills">
+        <h1 class="sub-title">My <span>Skills</span></h1>
+        <div class="skills-container">
+            <div class="Technical-bars">
+                <div class="bar">
+                    <div class="info"><span>Skill 1</span></div>
+                    <div class="progress-line skill1"><span></span></div>
+                </div>
+                <div class="bar">
+                    <div class="info"><span>Skill 2</span></div>
+                    <div class="progress-line skill2"><span></span></div>
+                </div>
+                <div class="bar">
+                    <div class="info"><span>Skill 3</span></div>
+                    <div class="progress-line skill3"><span></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="contact" id="contact">
+        <div class="contact-text">
+            <h2>Contact <span>Me</span></h2>
+            <h4>[Get in Touch]</h4>
+            <p>[Available for opportunities.]</p>
+            <div class="contact-list">
+                <li><i class="fa-solid fa-paper-plane"></i> [your-email@example.com]</li>
+                <li><i class="fa-solid fa-phone"></i> [Your Phone Number]</li>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form action="#">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Subject">
+                <textarea cols="40" rows="10" placeholder="Message" required></textarea>
+                <input type="submit" value="Send" class="send">
+            </form>
+        </div>
+    </section>
 
+    <footer class="footer">
+        <p>Copyright &copy; 2026 | All Rights Reserved.</p>
+    </footer>
 
+    <script>
+    // Typing Animation
+var typed = new Typed('.text', {
+    strings: ["Role One", "Role Two", "Role Three"], // Fill roles here
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
+});
 
+// Smooth Active Link
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
 
-    <script src="main.js"></script>
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop - 150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height) {
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            });
+        };
+    });
+};
+    </script>
 </body>
-
 </html>
